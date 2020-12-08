@@ -62,4 +62,4 @@ DB_PORT=5432
 Для тестирования функционала проекта предусмотрен набор тестовых данных. Загрузить тестовые данные в базу можно из терминала контейнера Web-приложения, командой: 
 
 ```python manage.py loaddata fixtures.json```
-![YaMDB Final](https://github.com/blackwolfsm/yamdb_final/workflows/yamdb/badge.svg)
+![yamdb_workdlow](https://github.com/blackwolfsm/yamdb_final/workflows/yamdb/badge.svg)
