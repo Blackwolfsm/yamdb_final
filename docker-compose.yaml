@@ -1,0 +1,31 @@
+version: '3.8'
+
+volumes:
+  postgres_data:
+  folder_static:
+  folder_media:
+
+services:
+  db:
+    image: postgres:12.4
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+  web:
+    image: blackwolfsm/yamdb_f:latest
+    volumes:
+      - folder_static:/code/static
+      - folder_media:/code/media
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+  nginx:
+    image: blackwolfsm/yamdb_f_nginx:latest
+    volumes:
+      - folder_static:/code/static
+      - folder_media:/code/media
+    ports:
+      - "80:80"
