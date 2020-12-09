@@ -63,4 +63,5 @@ DB_PORT=5432
 
 ```python manage.py loaddata fixtures.json```
 
+
 ![yamdb](https://github.com/blackwolfsm/yamdb_final/workflows/yamdb_final/badge.svg)
