@@ -27,8 +27,9 @@ jobs:
       
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
-    runs-on: ubuntu-latest
     needs: tests
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -44,12 +45,6 @@ jobs:
         with:
           push: true
           tags: blackwolfsm/yamdb_f:latest
-      - name: Push to Docker Hub image yamdb_f_nginx
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          file: ./nginx/Dockerfile
-          tags: blackwolfsm/yamdb_f_nginx:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -79,5 +74,3 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: ${{ github.workflow }} успешно выполнен!
-
-    
